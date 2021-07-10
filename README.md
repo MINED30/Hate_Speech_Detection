@@ -15,6 +15,10 @@
 
 :zap: Inference Time : 38.16 ± 3.4 ms (ELECTRA Embedding + Logistic Regression)
 
+:chart_with_upwards_trend: Model Intenpretation, Last hidden state visualization with PCA
+
+:ringed_planet: BentoML
+
 :page_facing_up:
 <a href="https://github.com/MINED30/Hate_Speech_Detection/blob/main/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EB%B3%B4%EA%B3%A0%EC%84%9C_(20210626-20210709).pdf" target="_parent\">See in detail</a>
 
@@ -33,7 +37,6 @@
 |HATESPEECH_08_(Modeling_with_FinalDataset_02).ipynb|GloVe + Machine learning model, BERT embedding + Machine learning moedl training and evaluation|
 |HATESPEECH_09_(Service_Prototype_&_Benchmarks).ipynb|Prototype, Benchmarks |
 |HATESPEECH_10_(BentoML).ipynb|BentoML|
-|HATESPEECH_11_(Model_Visualization).ipynb|Model Intenpretation, Last hidden state visualization with PCA|
 |HATESPEECH_11_(Model_Visualization).ipynb|Model Intenpretation, Last hidden state visualization with PCA|
 |프로젝트보고서_(20210626-20210709).pdf|Report|
 
