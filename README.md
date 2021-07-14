@@ -1,4 +1,5 @@
 ## Hatespeech Detection
+####  마인드로직 협업 프로젝트
 
 
 ### *Feature*         
