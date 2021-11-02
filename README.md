@@ -20,7 +20,7 @@
 :ringed_planet: BentoML
 
 :page_facing_up:
-<a href="https://github.com/MINED30/Hate_Speech_Detection/blob/main/report.pdf" target="_parent\">See in detail</a>
+<a href="https://github.com/MINED30/Hate_Speech_Detection/blob/main/REPORT.pdf" target="_parent\">See in detail</a>
 
 
 ### *Notebook file explanation*
