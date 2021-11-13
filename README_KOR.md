@@ -1,5 +1,4 @@
-## Hatespeech Detection 마인드로직 협업 프로젝트
-
+## Hatespeech Detection 
 
 ### *Feature*         
 
@@ -18,9 +17,6 @@
 :chart_with_upwards_trend: Model Intenpretation, Last hidden state visualization with PCA
 
 :ringed_planet: BentoML
-
-:page_facing_up:
-<a href="https://github.com/MINED30/Hate_Speech_Detection/blob/main/REPORT.pdf" target="_parent\">See in detail</a>
 
 
 ### *Notebook file explanation*
