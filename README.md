@@ -57,7 +57,7 @@ In the paper proposing SqueezeBERT, which is known to effectively lighten the BE
 
 The data set used is as shown in <Table 1>, and in this report, it is written as an abbreviation on the right. Many data sets in English were available. Even in the FOUNTA and Wz-Ls data sets containing only the Twitter ID, even though the existing Twitter was deleted, the total collected data reached about 400,000 when the duplicates were removed after pre-processing.
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9b2a655e-d796-46a0-98c3-11d6b970745f/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211113%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211113T104811Z&X-Amz-Expires=86400&X-Amz-Signature=fe3c771d3a616a17a3e2dfcdc6ee1c7399c89cec761381463d61365f5266e73c&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width=550px/>
+<img src="https://user-images.githubusercontent.com/73981982/146149802-991e8983-19ff-406d-99ef-17cc2cb51dcd.png" width=400px/>
 
 _\<Table 1> List of collected datasets_
 
@@ -67,19 +67,18 @@ _\<Table 1> List of collected datasets_
 
 Datasets are validated. It was trained and validated on one dataset with Glove BiLSTM. I thought that it would be a very good dataset if the general performance was excellent with a small dataset, so Information Density, one of the indicators used when measuring the efficiency of parameters in the computer vision field, borrowed the concept and gave a penalty according to the amount of the dataset. The method was divided by the 1/10th power of the number of data included in the dataset in the ROC AUC score. The results are visualized in <Figure 1>.
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7f040f06-273f-43cc-bf33-1e7ff744b530/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211113%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211113T105050Z&X-Amz-Expires=86400&X-Amz-Signature=32279c806217130e4d9db9781b4cffb5cae6383adb163773ac6fd8e28945c8c9&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width=400px/>
-
+<img src="https://user-images.githubusercontent.com/73981982/146149849-31a6eec4-7476-45e6-a1c5-0d428d4287e3.png" width=550px/>
 
 Most datasets showed general performance, but the model trained with THSD and conan+multi dataset showed less than 0.25 in all validation datasets, so it was judged that there was no general performance and was excluded from the final dataset.
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8f7405f8-d5ea-4a89-9204-c8172367d52c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211113%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211113T105155Z&X-Amz-Expires=86400&X-Amz-Signature=73dab12df564e237736f043681857634769ae8829ae685623813a6b8054ad138&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width=550px/>
+<img src="https://user-images.githubusercontent.com/73981982/146150089-e535b22a-48af-4a1b-bd36-026af0867937.png" width=550px/>
 
 _\<Figure 1> Validation Heatmap_
 
 
 **Data set combinations** were evaluated by performing 44 trials. All datasets except THSD, Conan, and Multi datasets were combined and performed once, and the number of datasets was randomly selected from 2 to 10 and performed 43 times. Each dataset was divided into a training dataset and a validation dataset, and only the training dataset was used for training and the validation dataset was used for validation. In conclusion, the data and general performance increased as the amount of data increased, and the data set that did not include THSD and Conan+Multi had the best performance and was selected as the final dataset. In <Table 2>, the evaluation results for the top 5 and bottom 5 are attached.
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/77f3bd74-0e47-47a7-82f6-61f3c667ffa7/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211113%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211113T105548Z&X-Amz-Expires=86400&X-Amz-Signature=41e35ff9ce4bfd8e28b3cef84805d15e8509d1c2be8fbbe6f412fc966f762224&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width=100%/>
+<img src="https://user-images.githubusercontent.com/73981982/146150362-080c8335-1eeb-4115-8605-c29ab24ce2a8.png" width=100%/>
 
 _\<Table 2> Validation results_
 
@@ -95,7 +94,7 @@ It was decided to train in the usual way. Using the dataset selected above, in t
 
 When performing an actual service, the result is output after combining 2 to 5 utterances. For example, if the previous utterance is “Hello, My name is Changwoo” and the currently written utterance is “Hey Monkey”, the sentence input to the model becomes “Hello, My name is Changwoo Hey Monkey”. If you continue to input sentences like this, it is expected that you can predict including the context.
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/d4afae90-8aab-4440-8cc1-c331090abbd2/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211113%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211113T105608Z&X-Amz-Expires=86400&X-Amz-Signature=b8bc3b482f889bdbdbbc7c4c399ddc7c20413bf2117a2d31e16dbbcafe4d72de&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width=100%/>
+<img src="https://user-images.githubusercontent.com/73981982/146150161-f1af3e58-647e-42bb-ab88-828128bdda57.png" width=100%/>
 
 _\<Figure 2> Visualization of the results of the last layer of each model through PCA_
 
@@ -107,7 +106,8 @@ The model tried with the final data set can be roughly divided into (1)GloVe + [
 
 In order to examine how the data was internally classified according to the model, the last hidden state of the trained BiLSTM+LSTM, DitilBERT, and ELECTRA models were extracted, reduced to two dimensions through PCA, and then visualized as \<Figure 2>. . Even though it is reduced to two dimensions in the last layer, it seems to have been classified well with the naked eye, and it is expected that a simple model such as a logistic will produce good enough results without attaching a time-consuming FC layer.
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8f7405f8-d5ea-4a89-9204-c8172367d52c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211113%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211113T105155Z&X-Amz-Expires=86400&X-Amz-Signature=73dab12df564e237736f043681857634769ae8829ae685623813a6b8054ad138&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width=550px/>
+
+<img src="https://user-images.githubusercontent.com/73981982/146150476-d7a74734-eeb6-4e5b-b9d4-e707a9b6a108.png" width=550px/>
 
 _\<Table 3> Performance evaluation of the model<br>*Embedded without fine-tuning_
 
@@ -120,13 +120,13 @@ DistilBERT also showed good performance following it, and the results of embeddi
 
 ### **4.4 Benchmark**
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/373c0544-8adf-4099-82bc-1bf0b64506da/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211113%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211113T110048Z&X-Amz-Expires=86400&X-Amz-Signature=95f112754f41f1d5a115d0edc4aac052573301419a0e19353aacfd8de38d23e3&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width=100%/>
+<img src="https://user-images.githubusercontent.com/73981982/146150550-7a555ef4-4f78-4b3e-bf66-a021f442f42d.png" width=100%/>
 
 _\<Figure 3> Elapsed time to inference 2 or 5 sentences_
 
 The benchmark was conducted in Colab without a hardware accelerator, and Intel(R) Xeon(R) CPU @ 2.00 GHz was assigned. The sentence used to measure the time is "Hello, My Name is Changwoo. Hello, Mind Logic. Hello, CodeStates". In order to include the context, two or five sentences were repeated a total of 5000 times, and 10% of each was removed in order to erase the abnormal measurement. Finally, 4000 pieces of measured data were evaluated. It is summarized in \<Table 4> based on the 95% confidence interval (mean ± 2 standard deviations).
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/d484d16a-997d-461e-ace8-c9c26458189c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211113%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211113T105907Z&X-Amz-Expires=86400&X-Amz-Signature=4a332ee0affd9ef1c343796fede3f9324460adfd70f283b903d5a426400f986d&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width=550px/>
+<img src="https://user-images.githubusercontent.com/73981982/146150607-e731fe26-b928-4817-aba6-14dd4e99ac31.png" width=550px/>
 
 _\<Table 4> Elapsed time to inference 2 or 5 sentences_
 
@@ -134,7 +134,7 @@ Parentheses in the Model column of \<Table 4> indicate the number of sentences c
 
 The ELECTRA model used the Transformers API, the Logistic Regression used the Scikit-learn API, and the trained model was distributed through BentoML.
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/704fef08-67d0-48b0-85e1-19e394130ea7/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211113%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211113T110002Z&X-Amz-Expires=86400&X-Amz-Signature=d5b31fd48d12165b30b98eb6cdecaa665277a12eded611ee0643c5f6c630d926&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width=100%/>
+<img src="https://user-images.githubusercontent.com/73981982/146150668-030183dc-7019-4f4a-b4b7-bcebacb2b005.png" width=100%/>
 
 _\<Figure 4> BentoML operation screen: When class prediction is different through context_
 
